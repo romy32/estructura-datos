@@ -1,0 +1,25 @@
+temperaturas = []
+
+for n in range(0, 5):
+  t = int(input("Registre la temperatura"))
+  temperatura.append(t)
+
+
+
+promedio = sum (temperatura)  / len (temperatura) 
+
+if promedio < 20:
+  print("Se necesita arreglo la temperatura promedio es baja")
+
+elif < = t <= 30:
+  print("El aire esta en excelentes condiciones")
+
+else:
+  print ("se necesaita un arreglo la temperatura promedio es baja")
+
+
+
+
+
+
+
