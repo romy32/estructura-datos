@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nuevo Pedido</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script>
+        function agregarProducto() {
+            const container = document.getElementById("productos");
+            const div = document.createElement("div");
+            div.innerHTML = `
+                <input name="producto[]" placeholder="Nombre del producto" required>
+                <input name="peso[]" type="number" step="0.01" placeholder="Peso (kg)" required>
+                <input name="categoria[]" placeholder="Categoría" required>
+                <button type="button" onclick="this.parentNode.remove()">Eliminar</button>
+                <br><br>
+            `;
+            container.appendChild(div);
+        }
+    </script>
+</head>
+<body>
+    <h1>Crear Nuevo Pedido</h1>
+    <form method="post">
+        <label>Nombre del cliente:</label>
+        <input name="nombre" required><br><br>
+        <label>Correo del cliente:</label>
+        <input name="correo" type="email" required><br><br>
+
+        <h3>Productos</h3>
+        <div id="productos">
+            <div>
+                <input name="producto[]" placeholder="Nombre del producto" required>
+                <input name="peso[]" type="number" step="0.01" placeholder="Peso (kg)" required>
+                <input name="categoria[]" placeholder="Categoría" required>
+                <button type="button" onclick="this.parentNode.remove()">Eliminar</button>
+                <br><br>
+            </div>
+        </div>
+        <button type="button" onclick="agregarProducto()">Agregar producto</button><br><br>
+
+        <button type="submit">Crear pedido</button>
+    </form>
+    <br>
+    <a href="{{ url_for('index') }}">Volver al inicio</a>
+</body>
+</html>

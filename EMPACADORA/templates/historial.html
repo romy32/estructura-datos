@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Historial de {{ cliente.nombre }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Historial de pedidos de {{ cliente.nombre }}</h1>
+    <ul>
+        {% for pedido in historial %}
+            <li>
+                <strong>Pedido:</strong>
+                <ul>
+                    {% for producto in pedido %}
+                        <li>{{ producto }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            <li>No hay pedidos.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Sugerencias de categorías</h2>
+    <ul>
+        {% for categoria in sugerencias %}
+            <li>{{ categoria }}</li>
+        {% else %}
+            <li>No hay sugerencias.</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="{{ url_for('index') }}">Volver al inicio</a>
+</body>
+</html>

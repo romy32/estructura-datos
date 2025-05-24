@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Empacadora - Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Bienvenido {{ session.usuario }}</h1>
+    <a href="{{ url_for('logout') }}">Cerrar sesión</a><br><br>
+    <a href="{{ url_for('nuevo_pedido') }}">Crear nuevo pedido</a><br>
+    <a href="{{ url_for('ver_empaque') }}">Ver cola de empaque</a><br>
+    <a href="{{ url_for('graficos') }}">Ver gráficos</a><br><br>
+
+    <h2>Clientes registrados</h2>
+    <ul>
+        {% for cliente in clientes %}
+            <li>
+                {{ cliente.nombre }} - {{ cliente.correo }} - 
+                <a href="{{ url_for('historial', correo=cliente.correo) }}">Historial</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cola de Empaque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Cola de Empaque</h1>
+    <form method="post" action="{{ url_for('empacar') }}">
+        <button type="submit">Empacar siguiente producto</button>
+    </form>
+
+    <h2>Productos en cola</h2>
+    <ul>
+        {% for producto in productos %}
+            <li>
+                {{ producto }} 
+                <a href="{{ url_for('devolver', nombre=producto.nombre) }}">Devolver</a>
+            </li>
+        {% else %}
+            <li>No hay productos en la cola.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Productos devueltos</h2>
+    <ul>
+        {% for devuelto in productos_devueltos %}
+            <li>{{ devuelto.producto }} - Razón: {{ devuelto.razon }}</li>
+        {% else %}
+            <li>No hay productos devueltos.</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <a href="{{ url_for('index') }}">Volver al inicio</a>
+</body>
+</html>

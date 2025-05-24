@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráficos de Categorías</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Gráfico de Categorías de Productos</h1>
+    <canvas id="graficoCategorias" width="600" height="400"></canvas>
+
+    <script>
+        async function cargarDatos() {
+            const response = await fetch("{{ url_for('datos_grafico') }}");
+            const data = await response.json();
+
+            const ctx = document.getElementById('graficoCategorias').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.categorias,
+                    datasets: [{
+                        label: 'Número de productos',
+                        data: data.frecuencias,
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            precision: 0
+                        }
+                    }
+                }
+            });
+        }
+        cargarDatos();
+    </script>
+
+    <br>
+    <a href="{{ url_for('index') }}">Volver al inicio</a>
+</body>
+</html>

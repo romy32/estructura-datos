@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Devolver Producto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <h1>Devolver Producto: {{ nombre }}</h1>
+    <form method="post">
+        <label for="razon">Razón de la devolución:</label><br>
+        <textarea id="razon" name="razon" rows="4" cols="50" required></textarea><br><br>
+        <button type="submit">Enviar devolución</button>
+    </form>
+    <br>
+    <a href="{{ url_for('ver_empaque') }}">Volver a la cola de empaque</a>
+</body>
+</html>
